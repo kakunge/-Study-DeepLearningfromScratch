@@ -13,9 +13,11 @@ rw, rd = ran.randint(0, w-2), ran.randint(0,d-2)
 r = ran.randint(0, h)
 arr[rw, rd] = arr[rw, rd+1] = arr[rw+1, rd] = arr[rw+1, rd+1] = r
 
+'''
 print(rw, rd, r)
 print(np.max(arr))
 print(arr)
+'''
 
 #드론 좌표 설정
 dw1 = ran.randint(0, w-2)
@@ -28,7 +30,7 @@ dw4 = dw1+1
 dd4 = dd1+1
 dh = ran.randint(h+1, h+60)
 
-print(dw1, dd1, dh)
+#print(dw1, dd1, dh)
 
 #인식 가능 구역
 ch = np.zeros((w, d))
@@ -63,7 +65,7 @@ distanceArr[dw4, dd4] = 0.0
 
 distanceArr = np.sqrt(distanceArr, distanceArr)
 
-print(distanceArr)
+#print(distanceArr)
 
 #기울기 계산
 slopeArr = np.zeros((w, d), float)
@@ -84,4 +86,15 @@ slopeArr[dw3, dd3] = 0.0
 slopeArr[dw4, dd4] = 0.0
         
 print(slopeArr)
+
+#탐색 가능한 영역 구분
+def find(l):
+    min = 10**98
+    lp=[]
+    for i in range(len(l)):
+        if min > l[i]:
+            min = l[i]
+            lp.append(min)
+
+    return lp
 
